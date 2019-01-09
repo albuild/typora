@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+eval `cat env`
+mkdir -p rpm
+rm -rf rpm/$version
+mkdir rpm/$version
+exec docker run --rm -v `pwd`/rpm/$version:/rpm albuild-typora:$version /bin/bash -l -c "cp /*.rpm /rpm"
